@@ -315,8 +315,29 @@
                     <span>Dashboard</span>
                 </a>
             </li><!-- End Dashboard Nav -->
-
-        </ul>
+           
+        <li class="nav-item">
+            <a class="nav-link collapsed {{ request()->is('DBUsers') ? 'active' : '' }} || {{ request()->is('UsersInsert') ? 'active' : '' }}"
+                data-bs-target="#for" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-person"></i><span>Users</span><i
+                    class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="for" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('DbUser') }}"
+                        class="{{ request()->is('DBUsers') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>All Users</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('UserInsert') }}"
+                        class="{{ request()->is('UsersInsert') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>User Insert</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Service Nav -->
+    </ul>
 
     </aside><!-- End Sidebar-->
 
