@@ -337,6 +337,28 @@
                 </li>
             </ul>
         </li><!-- End Service Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed"
+                class=" {{ request()->is('Dbcustomers') ? 'active' : '' }} || {{ request()->is('customersInsert') ? 'active' : '' }}"
+                data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-person-hearts"></i><span>Customers</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('Dbcustomer') }}" class="{{ request()->is('Dbcustomers') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>All Customers</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('customerInsert') }}"
+                        class="{{ request()->is('customersInsert') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Customer Insert</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Users Nav -->
+
     </ul>
 
     </aside><!-- End Sidebar-->
