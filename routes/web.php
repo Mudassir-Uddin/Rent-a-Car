@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\carsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\customersController;
 use App\Http\Controllers\UsersController;
@@ -32,3 +33,12 @@ Route::post('/customersStore', [customersController::class, 'Store']);
 Route::get('/customersedit/{id}', [customersController::class, 'edit']);
 Route::post('/customersupdate/{id}', [customersController::class, 'update']);
 Route::get('/customersdelete/{id}', [customersController::class, 'delete']);
+
+// DB cars
+
+Route::get('/Dbcars', [carsController::class, 'cars'])->name('Dbcar');
+Route::get('/carsInsert', [carsController::class, 'insert'])->name('carInsert');
+Route::post('/carsStore', [carsController::class, 'Store']);
+Route::get('/carsedit/{id}', [carsController::class, 'edit']);
+Route::post('/carsupdate/{id}', [carsController::class, 'update']);
+Route::get('/carsdelete/{id}', [carsController::class, 'delete']);

@@ -357,7 +357,29 @@
                     </a>
                 </li>
             </ul>
-        </li><!-- End Users Nav -->
+        </li><!-- End Customers Nav -->
+
+        
+        <li class="nav-item">
+            <a class="nav-link collapsed"
+                class=" {{ request()->is('Dbcars') ? 'active' : '' }} || {{ request()->is('carsInsert') ? 'active' : '' }}"
+                data-bs-target="#component-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-car-front-fill"></i><span>Cars</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="component-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('Dbcar') }}" class="{{ request()->is('Dbcars') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>All Cars</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('carInsert') }}"
+                        class="{{ request()->is('carsInsert') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Car Insert</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Cars Nav -->
 
     </ul>
 
