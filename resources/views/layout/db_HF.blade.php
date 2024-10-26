@@ -381,6 +381,29 @@
             </ul>
         </li><!-- End Cars Nav -->
 
+        
+        
+        <li class="nav-item">
+            <a class="nav-link collapsed"
+                class=" {{ request()->is('Dbrentals') ? 'active' : '' }} || {{ request()->is('rentalsInsert') ? 'active' : '' }}"
+                data-bs-target="#rental-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-car-front-fill"></i><span>Cars</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="rental-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('Dbrental') }}" class="{{ request()->is('Dbrentals') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>All rental</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('carInsert') }}"
+                        class="{{ request()->is('rentalsInsert') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>rental Insert</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Cars Nav -->
+
     </ul>
 
     </aside><!-- End Sidebar-->

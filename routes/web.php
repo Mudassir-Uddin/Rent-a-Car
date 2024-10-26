@@ -3,8 +3,10 @@
 use App\Http\Controllers\carsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\customersController;
+use App\Http\Controllers\rentalsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\IsAdminMiddleware;
 
 Route::get('/', function () {
     return view('welcome');
@@ -42,3 +44,12 @@ Route::post('/carsStore', [carsController::class, 'Store']);
 Route::get('/carsedit/{id}', [carsController::class, 'edit']);
 Route::post('/carsupdate/{id}', [carsController::class, 'update']);
 Route::get('/carsdelete/{id}', [carsController::class, 'delete']);
+
+// DB Rentals
+
+Route::get('/Dbrentals', [rentalsController::class, 'rentals'])->name('Dbrental');
+Route::get('/rentalsInsert', [rentalsController::class, 'insert'])->name('rentalInsert');
+Route::post('/rentalsStore', [rentalsController::class, 'Store']);
+Route::get('/rentalsedit/{id}', [rentalsController::class, 'edit']);
+Route::post('/rentalsupdate/{id}', [rentalsController::class, 'update']);
+Route::get('/rentalsdelete/{id}', [rentalsController::class, 'delete']);
