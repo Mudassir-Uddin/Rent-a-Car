@@ -1,6 +1,10 @@
 @extends('layout.db_HF')
 @section('mydashboard')
-    <main id="main" class="main">
+@php
+    use Carbon\Carbon;
+@endphp
+
+<main id="main" class="main">
 
         <div class="pagetitle">
             <h1>cars Tables</h1>
@@ -55,7 +59,8 @@
                                                         src="{{ $ct->img }}" width="80px" height="50px"
                                                         class="circle" alt=""></a></td>
 
-                                            <td>{{ $ct->date }}</td>
+                                            {{-- <td>{{ $ct->date }}</td> --}}
+                                            <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $ct->date)->format('Y') }}</td>
                                             <td>{{ $ct->registration_number }}</td>
                                             <td>{{ $ct->color }}</td>
                                             <td>{{ $ct->daily_rate }}</td>

@@ -30,8 +30,8 @@
                                         <th>rental_date</th>
                                         <th>return_date</th>
                                         <th>status</th>
-                                        <th>total_amount</th>
-                                        <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
+                                        <th>total</th>
+                                        <th data-type="date" data-format="YYYY/DD/MM">Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -43,20 +43,24 @@
                                         <tr>
                                             <th scope="row">{{ ++$i }}</th>
                                             <td>{{ $ct->customers->name }}</td>
-                                            <td>{{ $ct->cars->Model }}</td>
+                                            <td>{{ $ct->cars->registration_number }}</td>
                                             <td>{{ $ct->rental_date }}</td>
                                             <td>{{ $ct->return_date }}</td>
-                                            <td>{{ $ct->total_amount }}</td>
                                             <td>
                                                 @if ($ct->status == 1)
-                                                    <option value="1">Booked</option>
+                                                    <option value="1">Available</option>
                                                 @elseif ($ct->status == 2)
-                                                    <option value="2">Checked-In</option>
+                                                    <option value="2">Rented</option>
                                                     {{-- @endforeach --}}
+                                                @elseif ($ct->status == 3)
+                                                    <option value="3">Maintenance</option>
                                                 @else
-                                                    <option value="3">Cancelled</option>
+                                                    <option value="4">Reserved</option>
                                                 @endif
                                             </td>
+
+
+                                            <td>{{ $ct->total }}</td>
                                             <td>{{ $ct->updated_at = date('Y-m-d') }}</td>
                                             <td>
                                                 <button class="btn btn-warning "><a class="text-white"

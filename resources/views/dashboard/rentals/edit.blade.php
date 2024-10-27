@@ -41,7 +41,7 @@
                                         @foreach ($CarId as $ct)
                                             {{-- <option value="0">Select SubServices</option> --}}
                                             @if ($ct->id == $st->car_id)
-                                                <option value="{{$ct->id}}" selected>{{$ct->Make}}</option>
+                                                <option value="{{$ct->id}}" selected>{{$ct->registration_number}}</option>
                                             @else
                                                 <option value="{{$ct->id}}">{{$ct->name}}</option>
                                             @endif
@@ -71,16 +71,19 @@
                                 <select name="status" id="" class="form-select mb-3">
                                     @if ($st->status == 1)
                                         {{-- @foreach ($Service as $sr) --}}
-                                        <option value="1">---Booked---</option>
+                                        <option value="1">---Available---</option>
                                     @elseif ($st->status == 2)
-                                        <option value="2">---Checked-In---</option>
+                                        <option value="2">---Rented---</option>
                                         {{-- @endforeach --}}
+                                    @elseif ($st->status == 3)
+                                        <option value="3">---Maintenance---</option>
                                     @else
-                                        <option value="3">---Cancelled---</option>
+                                        <option value="4">---Reserved---</option>
                                     @endif
-                                    <option value="1">Booked</option>
-                                    <option value="2">Checked-In</option>
-                                    <option value="3">Cancelled</option>
+                                    <option value="1">Available</option>
+                                    <option value="2">Rented</option>
+                                    <option value="3">Maintenance</option>
+                                    <option value="4">Reserved</option>
                                 </select>
 
                                 <div class="form-floating mb-3">

@@ -46,13 +46,13 @@
                                         <option value="0" selected disabled>Select Car No</option>
                                         @foreach ($CarId as $sr)
                                         {{-- @if ($rental == $rentals->rental_date || $rentals->return_date) --}}
-                                        <option disabled value="{{ $sr->id }}">{{ $sr->Make }}</option>
+                                        {{-- <option disabled value="{{ $sr->id }}">{{ $sr->registration_number }}</option> --}}
                                         {{-- @else --}}
-                                        <option value="{{ $sr->id }}">{{ $sr->Make }}</option>
+                                        <option value="{{ $sr->id }}">{{ $sr->registration_number }}</option>
                                         {{-- @endif --}}
                                         @endforeach
                                     </select>
-                                    <label for="floatingText">Car no</label>
+                                    <label for="floatingText">Car NB</label>
                                     @error('car_id')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
@@ -79,9 +79,10 @@
                                 <label for="formFileLg" class="form-label">Status</label>
                                 <select name="status" id="" class="form-select mb-3">
                                     <option value="0" selected disabled>Select Status</option>
-                                    <option value="1">Booked</option>
-                                    <option value="2">Checked-In</option>
-                                    <option value="3">Cancelled</option>
+                                    <option value="1">Available</option>
+                                    <option value="2">Rented</option>
+                                    <option value="3">Maintenance</option>
+                                    <option value="4">Reserved</option>
                                 </select>
                                 @error('status')
                                 <p class="text-danger">{{ $message }}</p>

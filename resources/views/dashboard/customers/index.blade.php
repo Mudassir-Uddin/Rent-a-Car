@@ -29,9 +29,9 @@
                                         <th>Image</th>
                                         <th>Email</th>
                                         <th>Phone</th>
-                                        <th>Driver_License</th>
+                                        <th>D_License</th>
                                         <th>Address</th>
-                                        <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
+                                        <th data-type="date" data-format="YYYY/DD/MM">Date</th>
                                         {{-- @if (session()->get('role') == 1) --}}
                                             <th>Action</th>
                                         {{-- @else --}}
@@ -51,11 +51,14 @@
                                             <td><a href="{{ $ct->img }}" data-lightbox="roadtrip" class="data"><img
                                                         src="{{ $ct->img }}" width="80px" height="50px"
                                                         class="circle" alt=""></a></td>
-
-                                            <td>{{ $ct->email }}</td>
+                                            <td style="width:70%;">
+                                            <p style="min-height:100px; max-height:100px; overflow:auto;  display:block;">{{ $ct->email }}</p>
+                                            </td>
                                             <td>{{ $ct->phone }}</td>
                                             <td>{{ $ct->driver_license_number}}</td>
-                                            <td>{{ $ct->address}}</td>
+                                            <td style="width:70%;">
+                                            <p style="min-height:100px; max-height:100px; overflow:auto;  display:block;">{{ $ct->address}}</p>
+                                            </td>
                                             <td>{{ $ct->updated_at = date('Y-m-d') }}</td>
                                             {{-- @if (session()->get('role') == 3) --}}
                                                 
