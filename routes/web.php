@@ -3,6 +3,7 @@
 use App\Http\Controllers\carsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\customersController;
+use App\Http\Controllers\payment_methodController;
 use App\Http\Controllers\rentalsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -53,3 +54,12 @@ Route::post('/rentalsStore', [rentalsController::class, 'Store']);
 Route::get('/rentalsedit/{id}', [rentalsController::class, 'edit']);
 Route::post('/rentalsupdate/{id}', [rentalsController::class, 'update']);
 Route::get('/rentalsdelete/{id}', [rentalsController::class, 'delete']);
+
+// DB payment_methods
+
+Route::get('/Dbpayment_methods', [payment_methodController::class, 'payment_methods'])->name('Dbpayment_method');
+Route::get('/payment_methodsInsert', [payment_methodController::class, 'insert'])->name('payment_methodInsert');
+Route::post('/payment_methodsStore', [payment_methodController::class, 'Store']);
+Route::get('/payment_methodsedit/{id}', [payment_methodController::class, 'edit']);
+Route::post('/payment_methodsupdate/{id}', [payment_methodController::class, 'update']);
+Route::get('/payment_methodsdelete/{id}', [payment_methodController::class, 'delete']);

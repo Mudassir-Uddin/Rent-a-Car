@@ -404,6 +404,28 @@
             </ul>
         </li><!-- End Cars Nav -->
 
+        
+        <li class="nav-item">
+            <a class="nav-link collapsed"
+                class=" {{ request()->is('Dbpayment_methods') ? 'active' : '' }} || {{ request()->is('payment_methodsInsert') ? 'active' : '' }}"
+                data-bs-target="#payment_methods-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-credit-card-2-front-fill"></i><span>payment_methods</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="payment_methods-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('Dbpayment_method') }}" class="{{ request()->is('Dbpayment_methods') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>All payment_method</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('payment_methodInsert') }}"
+                        class="{{ request()->is('payment_methodsInsert') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>payment_method Insert</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Cars Nav -->
+
     </ul>
 
     </aside><!-- End Sidebar-->

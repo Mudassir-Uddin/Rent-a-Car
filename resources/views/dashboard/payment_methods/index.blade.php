@@ -1,13 +1,10 @@
 @extends('layout.db_HF')
 @section('mydashboard')
-@php
-    use Carbon\Carbon;
-@endphp
 
 <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>cars Tables</h1>
+            <h1>payment_methods Tables</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/Admindashboard">Home</a></li>
@@ -23,20 +20,13 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Cars Table</h5>
+                            <h5 class="card-title">Customer Table</h5>
                             <!-- Table with stripped rows -->
                             <table class="table datatable">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Make</th>
-                                        <th>Model</th>
-                                        <th>Image</th>
-                                        <th>Year</th>
-                                        <th>Number</th>
-                                        <th>Color</th>
-                                        <th>daily_rate</th>
-                                        <th>status</th>
+                                        <th>Name</th>
                                         <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
                                         {{-- @if (session()->get('role') == 1) --}}
                                         <th>Action</th>
@@ -49,38 +39,17 @@
                                     @php
                                         $i = 0;
                                     @endphp
-                                    @foreach ($cars as $ct)
+                                    @foreach ($payment_methods as $ct)
                                         <tr>
                                             <th scope="row">{{ ++$i }}</th>
-                                            <td>{{ $ct->make }}</td>
-                                            <td>{{ $ct->Model }}</td>
-
-                                            <td><a href="{{ $ct->img }}" data-lightbox="roadtrip" class="data"><img
-                                                        src="{{ $ct->img }}" width="80px" height="50px"
-                                                        class="circle" alt=""></a></td>
-
-                                            {{-- <td>{{ $ct->date }}</td> --}}
-                                            <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $ct->date)->format('Y') }}</td>
-                                            <td>{{ $ct->registration_number }}</td>
-                                            <td>{{ $ct->color }}</td>
-                                            <td>{{ $ct->daily_rate }}</td>
-                                            <td>
-                                                @if ($ct->status == 1)
-                                                    <option value="1">Available</option>
-                                                @elseif ($ct->status == 2)
-                                                    <option value="2">Ranted</option>
-                                                    {{-- @endforeach --}}
-                                                @else
-                                                    <option value="3">Under Maintenance</option>
-                                                @endif
-                                            </td>
+                                            <td>{{ $ct->name }}</td>
                                             <td>{{ $ct->updated_at = date('Y-m-d') }}</td>
                                             {{-- @if (session()->get('role') == 3) --}}
 
                                             {{-- @elseif (session()->get('role') == 1) --}}
                                             <td>
                                                 <button class="btn btn-warning "><a class="text-white"
-                                                        href="{{ url('/carsedit') }}/{{ $ct->id * 548548 }}">Edit</a></button>
+                                                        href="{{ url('/payment_methodsedit') }}/{{ $ct->id * 548548 }}">Edit</a></button>
                                                 <button onclick="myfun({{ $ct->id }})"
                                                     class="btn btn-danger">Delete</button>
                                             </td>
@@ -125,7 +94,7 @@
                         'success'
 
                     )
-                    window.location.href = "{{ url('/carsdelete') }}/" + id
+                    window.location.href = "{{ url('/payment_methodsdelete') }}/" + id
                 }
             })
             // if (ans) {
