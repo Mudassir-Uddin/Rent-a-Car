@@ -3,7 +3,7 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>rentals Tables</h1>
+            <h1>payments Tables</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/Admindashboard">Home</a></li>
@@ -19,18 +19,16 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Rental Table</h5>
+                            <h5 class="card-title">payment Table</h5>
                             <!-- Table with stripped rows -->
                             <table class="table datatable">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>customer_name</th>
-                                        <th>Vehicle_Nb</th>
-                                        <th>rental_date</th>
-                                        <th>return_date</th>
-                                        <th>status</th>
-                                        <th>total</th>
+                                        <th>Customer_Name</th>
+                                        <th>Vehicle Nb</th>
+                                        <th>Amount</th>
+                                        <th>payment_Method</th>
                                         <th data-type="date" data-format="YYYY/DD/MM">Date</th>
                                         <th>Action</th>
                                     </tr>
@@ -39,32 +37,17 @@
                                     @php
                                         $i = 0;
                                     @endphp
-                                    @foreach ($rentals as $ct)
+                                    @foreach ($payments as $ct)
                                         <tr>
                                             <th scope="row">{{ ++$i }}</th>
-                                            <td>{{ $ct->customers->name }}</td>
-                                            <td>{{ $ct->cars->registration_number }}</td>
-                                            <td>{{ $ct->rental_date }}</td>
-                                            <td>{{ $ct->return_date }}</td>
-                                            <td>
-                                                @if ($ct->status == 1)
-                                                    <option value="1">Available</option>
-                                                @elseif ($ct->status == 2)
-                                                    <option value="2">Rented</option>
-                                                    {{-- @endforeach --}}
-                                                @elseif ($ct->status == 3)
-                                                    <option value="3">Maintenance</option>
-                                                @else
-                                                    <option value="4">Reserved</option>
-                                                @endif
-                                            </td>
-
-
-                                            <td>{{ $ct->total }}</td>
+                                            <td>{{ $ct->rentals->customers->name }}</td>
+                                            <td>{{ $ct->rentals->cars->registration_number }}</td>
+                                            <td>{{ $ct->amount }}</td>
+                                            <td>{{ $ct->payment_methods->name }}</td>
                                             <td>{{ $ct->updated_at = date('Y-m-d') }}</td>
                                             <td>
                                                 <button class="btn btn-warning "><a class="text-white"
-                                                        href="{{ url('/rentalsedit') }}/{{ $ct->id }}">Edit</a></button>
+                                                        href="{{ url('/paymentsedit') }}/{{ $ct->id }}">Edit</a></button>
                                                 <button onclick="myfun({{ $ct->id }})"
                                                     class="btn btn-danger">Delete</button>
                                             </td>
@@ -103,7 +86,7 @@
                         'success'
 
                     )
-                    window.location.href = "{{ url('/rentalsdelete') }}/" + id
+                    window.location.href = "{{ url('/paymentsdelete') }}/" + id
                 }
             })
             // if (ans) {

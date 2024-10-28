@@ -402,7 +402,7 @@
                     </a>
                 </li>
             </ul>
-        </li><!-- End Cars Nav -->
+        </li><!-- End rentals Nav -->
 
         
         <li class="nav-item">
@@ -421,6 +421,28 @@
                     <a href="{{ route('payment_methodInsert') }}"
                         class="{{ request()->is('payment_methodsInsert') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>payment_method Insert</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End payment_methods Nav -->
+
+         
+        <li class="nav-item">
+            <a class="nav-link collapsed"
+                class=" {{ request()->is('Dbpayments') ? 'active' : '' }} || {{ request()->is('paymentsInsert') ? 'active' : '' }}"
+                data-bs-target="#payments-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-credit-card-fill"></i><span>payments</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="payments-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('Dbpayment') }}" class="{{ request()->is('Dbpayments') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>All payment</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('paymentInsert') }}"
+                        class="{{ request()->is('paymentsInsert') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>payment Insert</span>
                     </a>
                 </li>
             </ul>
