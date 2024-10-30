@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\carsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\customersController;
@@ -73,3 +74,13 @@ Route::post('/paymentsStore', [paymentsController::class, 'Store']);
 Route::get('/paymentsedit/{id}', [paymentsController::class, 'edit']);
 Route::post('/paymentsupdate/{id}', [paymentsController::class, 'update']);
 Route::get('/paymentsdelete/{id}', [paymentsController::class, 'delete']);
+
+//____________ Authentication _____________________
+#region Auth
+Route::get('/register', [AuthenticationController::class,'register']);
+Route::post('/registerstore', [AuthenticationController::class,'registerstore']);
+Route::get('/login', [AuthenticationController::class,'login']);
+Route::post('/loginstore', [AuthenticationController::class,'loginstore']);
+Route::get('/logout', [AuthenticationController::class,'logout']);
+Route::get('/update', [AuthenticationController::class,'update']);
+#endregion

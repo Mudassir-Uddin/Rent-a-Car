@@ -217,79 +217,82 @@
                     </ul><!-- End Messages Dropdown Items -->
 
                 </li><!-- End Messages Nav -->
-                {{-- @php
-                use App\Models\users;
-                $id = Session::get('id');
-                $user = users::where('id', $id)->get();
-            @endphp
-            @php
-
-                use App\Models\User;
-                use Illuminate\Http\Request;
-                use Illuminate\Support\Facades\DB;
-                use Illuminate\Support\Facades\Hash;
-                //  use Illuminate\Support\Facades\Session;
-                $user = users::where('id', Session::get('id'))->first();
-            @endphp --}}
+               
                 <li class="nav-item dropdown pe-3">
-                    {{-- @if (session()->has('email')) --}}
-                    {{-- @if ($user) --}}
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                         data-bs-toggle="dropdown">
-                        {{-- <img src="{{ $user->img}}" alt="Profile" --}}
-                            {{-- class="rounded-circle"> --}}
-                        {{-- <span class="d-none d-md-block dropdown-toggle ps-2">{{ $user->name }}</span> --}}
-                        {{-- @else --}}
-                        {{-- <a href="{{ url('/login') }}" class="my-2" style="font-size:25px;">Login</a> --}}
+                        @php
+
+                            use App\Models\User;
+                            use App\Models\Users;
+                            use Illuminate\Http\Request;
+                            use Illuminate\Support\Facades\DB;
+                            use Illuminate\Support\Facades\Hash;
+                            // use Illuminate\Support\Facades\Session;
+                            $user = users::where('id', Session::get('id'))->first();
+                        @endphp
+                        @if ($user)
+                            {{-- <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">     --}}
+                            <img class="rounded-circle me-lg-2" src="{{ $user->img }}" alt=""
+                                style="width: 40px; height: 40px;">
+                        @endif
+
+                        @if (session()->has('email'))
+                            @if ($user)
+                                <span class="fw-bolder d-none d-lg-inline-flex">{{ $user->name }}</span>
+                                <span class="d-none d-md-block dropdown-toggle ps-2"></span>
+                            @endif
+                        @endif
                     </a><!-- End Profile Iamge Icon -->
-                    {{-- @endif --}}
-                    {{-- @endif --}}
-                    {{-- <span>Admin</span> --}}
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            {{-- @if ($user) --}}
-                            {{-- <h6>{{ session()->get('name') }}</h6> --}}
-                            {{-- <h6>{{ $user->name}}</h6> --}}
-                            {{-- <span>{{$user->role==3 ?  "Visitor" : "Admin"}}</span> --}}
-                            {{-- @endif --}}
+                            @if (session()->has('email'))
+                                @if ($user)
+                                    <h6>{{ $user->name }}</h6>
+                                    @if ($user->role == 1)
+                                    <span>Admin</span>
+                                    @elseif ($user->role == 2)
+                                    <span>User</span>
+                                    @else
+                                    <span>Visitor</span>
+                                    @endif
+                                @endif
+                            @endif
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            @if (session()->has('email'))
+                                @if ($user)
+                                    <a class="dropdown-item d-flex align-items-center"
+                                        href="{{ url('/Profileedit') }}/{{ $user->id * 548548 }}">
+                                        <i class="bi bi-person"></i>
+                                        <span>My Profile</span>
+                                    </a>
+                                @endif
+                            @endif
                         </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                <i class="bi bi-person"></i>
-                                <span>My Profile</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                            <a class="dropdown-item d-flex align-items-center" href="{{ url('/') }}">
                                 <i class="bi bi-gear"></i>
-                                <span>Account Settings</span>
+                                <span>Website</span>
                             </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
                         </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                                <i class="bi bi-question-circle"></i>
-                                <span>Need Help?</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="{{url('/logout')}}">
+                            <a class="dropdown-item d-flex align-items-center" href="{{ url('/logout') }}">
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </a>
@@ -297,7 +300,6 @@
 
                     </ul><!-- End Profile Dropdown Items -->
                 </li><!-- End Profile Nav -->
-
             </ul>
         </nav><!-- End Icons Navigation -->
 
@@ -447,6 +449,28 @@
                 </li>
             </ul>
         </li><!-- End Cars Nav -->
+
+        
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ url('/register') }}">
+                <i class="bi bi-card-list"></i>
+                <span>Register</span>
+            </a>
+        </li><!-- End Register Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ url('/login') }}">
+                <i class="bi bi-box-arrow-in-right"></i>
+                <span>Login</span>
+            </a>
+        </li><!-- End Login Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ url('/logout') }}">
+                <i class="bi bi-box-arrow-in-left"></i>
+                <span>Logout</span>
+            </a>
+        </li><!-- End Login Page Nav -->
 
     </ul>
 
