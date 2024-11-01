@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\carsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\customersController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\payment_methodController;
 use App\Http\Controllers\paymentsController;
 use App\Http\Controllers\rentalsController;
@@ -11,9 +12,11 @@ use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsAdminMiddleware;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [HomeController::class, 'index'])->name('/');
 
 
 // Dashboard
