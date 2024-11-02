@@ -87,3 +87,17 @@ Route::post('/loginstore', [AuthenticationController::class,'loginstore']);
 Route::get('/logout', [AuthenticationController::class,'logout']);
 Route::get('/update', [AuthenticationController::class,'update']);
 #endregion
+
+// Dashboard Profile
+Route::get('/Profileedit/{id}', [DashboardController::class,'profiles'])->name('WebProfile');
+Route::post('/Profileupdate/{id}', [DashboardController::class,'update']);
+
+// User Reset Password
+Route::get('/passedit/{id}', [DashboardController::class,'passedit']);
+Route::post('/passupdate/{id}', [DashboardController::class,'pasupdate']);
+
+
+// Website Profile
+Route::get('/WebProfileedit/{id}', [HomeController::class,'profiles'])->name('Profile');
+Route::post('/WebProfileupdate/{id}', [HomeController::class,'update']);
+

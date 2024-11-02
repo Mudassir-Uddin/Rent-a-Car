@@ -49,7 +49,7 @@
     <link href="{{ url('/form/css/style.css') }}" rel="stylesheet">
 </head>
 
-<body style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(187, 5, 5)); !important">
+<body style="background-image: linear-gradient(to right, rgb(168, 165, 165), rgb(0, 0, 0)); !important">
 
 
     @yield('myform')

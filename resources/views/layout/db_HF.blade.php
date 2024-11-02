@@ -39,13 +39,13 @@
 
 <body>
 
-    {{-- @php
+    @php
     use Illuminate\Support\Facades\Session;
     $userRole = '';
     if (Session::has('role')) {
         $userRole = Session::get('role');
     }
-@endphp --}}
+@endphp
 
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
@@ -309,6 +309,7 @@
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
+            @if ($userRole == 1 || $userRole == 3)
 
             <li class="nav-item">
                 <a class="nav-link {{ request()->is('Admindashboard') ? 'active' : '' }}"
@@ -450,6 +451,31 @@
             </ul>
         </li><!-- End Cars Nav -->
 
+        @endif
+
+        @if ($userRole == 2)
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('/Profileedit') }}/{{ $user->id * 548548 }}">
+                <i class="bi bi-moon-fill"></i>
+                <span>Dashboard</span>
+            </a>
+        </li><!-- End Dashboard Nav -->
+        @endif
+        @if ($userRole == 2)
+        <li class="nav-item">
+            <a class="nav-link collapsed " href="{{ url('/') }}">
+                <i class="bi bi-gem"></i><span>Website</span>
+            </a>
+        </li>
+        @endif
+
+        
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ url('/') }}">
+                <i class="bi bi-check-circle"></i>
+                <span>Booking</span>
+            </a>
+        </li><!-- End Register Page Nav -->
         
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{ url('/register') }}">

@@ -15,7 +15,7 @@
                     <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-around mb-3">
                             <a href="index.html" class="">
-                                <h3  style="color:#dc143c;"><i class="fa fa-user-edit me-2"></i>Rent A Car</h3>
+                                <h3  style="color:#ffffff;"><i class="fa fa-user-edit me-2"></i>FlexiCar</h3>
                             </a>
                             <h3>Login User</h3>
                         </div>
@@ -42,8 +42,8 @@
                                 @enderror
                             </div>
 
-                            <button style="background-color:#dc143c; border-color:#dc143c;" class="btn btn-primary py-3 w-100 mb-4">Login</button>
-                            <a href="/"  style="color:#dc143c;">Back To Home :)</a>
+                            <button style="background-color:#ffffff; border-color:#ffffff; color:#000;" class="btn btn-primary py-3 w-100 mb-4">Login</button>
+                            <a href="/"  style="color:#ffffff;">Back To Home :)</a>
                         </form>
                     </div>
                 </div>
