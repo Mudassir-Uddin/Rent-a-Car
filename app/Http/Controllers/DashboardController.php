@@ -2,16 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\cars;
+use App\Models\customers;
+use App\Models\payments;
+use App\Models\rentals;
 use App\Models\Users;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
     //
     public function Admindashboard(){
-        return view('dashboard.index');
+        $UValue = Users::count();
+        $RValue = rentals::count();
+        $CValue = cars::count();
+        $CUValue = customers::count();
+        $recentRecords = payments::where('updated_at', '>=', Carbon::now()->subDays(7))
+        ->orderBy('updated_at', 'desc')
+        ->get();
+        $recentRental = rentals::where('updated_at', '>=', Carbon::now()->subDays(7))
+        ->orderBy('updated_at', 'desc')
+        ->get();
+        $recentCar = cars::where('updated_at', '>=', Carbon::now()->subDays(30))
+        ->orderBy('updated_at', 'desc')
+        ->get();
+        return view('dashboard.index',compact('CUValue','RValue','CValue','UValue','recentRecords','recentRental','recentCar'));
+    
     }
+    
 
     // Profile
     

@@ -31,19 +31,19 @@
                                             <h6>Filter</h6>
                                         </li>
 
-                                        {{-- <li>
-                                            <a href="{{ route('DbCar') }}"
-                                                class="{{ request()->is('DbCars') ? 'active' : '' }} dropdown-item">
+                                        <li>
+                                            <a href="{{ route('Dbcar') }}"
+                                                class="{{ request()->is('Dbcars') ? 'active' : '' }} dropdown-item">
                                                 All Cars
                                             </a>
-                                        </li> --}}
+                                        </li>
 
-                                        {{-- <li>
-                                            <a href="{{ route('CarInsert') }}"
-                                                class="{{ request()->is('CarsInsert') ? 'active' : '' }}  dropdown-item">
+                                        <li>
+                                            <a href="{{ route('carInsert') }}"
+                                                class="{{ request()->is('carsInsert') ? 'active' : '' }}  dropdown-item">
                                                 Car Insert
                                             </a>
-                                        </li> --}}
+                                        </li>
                                     </ul>
                                 </div>
 
@@ -56,7 +56,7 @@
                                             <i class="bi bi-life-preserver"></i>
                                         </div>
                                         <div class="ps-3">
-                                            {{-- <h6>{{ $RValue }}</h6> --}}
+                                            <h6>{{ $CValue }}</h6>
                                             {{-- <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> --}}
 
                                         </div>
@@ -78,19 +78,19 @@
                                             <h6>Filter</h6>
                                         </li>
 
-                                        {{-- <li>
-                                            <a href="{{ route('DbCustomers') }}"
-                                                class="{{ request()->is('DbCustomers') ? 'active' : '' }} dropdown-item">
+                                        <li>
+                                            <a href="{{ route('Dbcustomer') }}"
+                                                class="{{ request()->is('Dbcustomers') ? 'active' : '' }} dropdown-item">
                                                 All Customers
                                             </a>
-                                        </li> --}}
+                                        </li>
 
-                                        {{-- <li>
-                                            <a href="{{ route('CustomersInsert') }}"
-                                                class="{{ request()->is('CustomersInsert') ? 'active' : '' }}  dropdown-item">
+                                        <li>
+                                            <a href="{{ route('customerInsert') }}"
+                                                class="{{ request()->is('customersInsert') ? 'active' : '' }}  dropdown-item">
                                                 Customers Insert
                                             </a>
-                                        </li> --}}
+                                        </li>
                                     </ul>
                                 </div>
 
@@ -103,7 +103,7 @@
                                             <i class="bi bi-person-hearts"></i>
                                         </div>
                                         <div class="ps-3">
-                                            {{-- <h6>{{ $GValue }}</h6> --}}
+                                            <h6>{{ $CUValue }}</h6>
                                             {{-- <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span> --}}
 
                                         </div>
@@ -172,18 +172,18 @@
                                         <li class="dropdown-header text-start">
                                             <h6>Filter</h6>
                                         </li>
-                                        {{-- <li>
+                                        <li>
                                             <a href="{{ route('DbUser') }}"
                                                 class="{{ request()->is('DbUsers') ? 'active' : '' }} dropdown-item">
                                                 All Users
                                             </a>
-                                        </li> --}}
-                                        {{-- <li>
+                                        </li>
+                                        <li>
                                             <a href="{{ route('UserInsert') }}"
                                                 class="{{ request()->is('UsersInsert') ? 'active' : '' }} dropdown-item">
                                                 User Insert
                                             </a>
-                                        </li> --}}
+                                        </li>
                                     </ul>
                                 </div>
 
@@ -196,7 +196,7 @@
                                             <i class="bi bi-people"></i>
                                         </div>
                                         <div class="ps-3">
-                                            {{-- <h6>{{ $UValue }}</h6> --}}
+                                            <h6>{{ $UValue }}</h6>
                                             {{-- <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span> --}}
 
                                         </div>
@@ -219,19 +219,19 @@
                                             <h6>Filter</h6>
                                         </li>
 
-                                        {{-- <li>
+                                        <li>
                                             <a href="{{ route('Dbpayment') }}"
                                                 class="{{ request()->is('Dbpayments') ? 'active' : '' }} dropdown-item">
                                                 All Payments
                                             </a>
-                                        </li> --}}
+                                        </li>
 
-                                        {{-- <li>
+                                        <li>
                                             <a href="{{ route('paymentInsert') }}"
                                                 class="{{ request()->is('paymentsInsert') ? 'active' : '' }}  dropdown-item">
                                                 Payment Insert
                                             </a>
-                                        </li> --}}
+                                        </li>
                                     </ul>
                                 </div>
 
@@ -250,14 +250,15 @@
                                         </thead>
                                         <tbody>
 
-                                            {{-- @foreach ($recentRecords as $pt)
+                                            @foreach ($recentRecords as $pt)
                                                 <tr>
 
                                                     <td><a href=""
-                                                            class="text-primary fw-bold">{{ $pt->Rental->Customers->name }}</a>
+                                                            class="text-primary fw-bold">{{ $pt->rentals->customers->name }}</a>
                                                     </td>
                                                     <td>
-                                                        @if ($pt->payment_method == 1)
+                                                        {{$pt->payment_methods->name}}
+                                                        {{-- @if ($pt->payment_methods->name == 1)
                                                             <option value="1">Credit Card</option>
                                                         @elseif ($pt->payment_method == 2)
                                                             <option value="2">Debit Card</option>
@@ -265,12 +266,12 @@
                                                             <option value="3">Cash</option>
                                                         @else
                                                             <option value="4">Online Transfer</option>
-                                                        @endif
+                                                        @endif --}}
                                                     </td>
-                                                    <td>{{ $pt->amount_paid }}</td>
+                                                    <td>{{ $pt->amount }}</td>
                                                     <td>{{ $pt->updated_at = date('Y-m-d') }}</td>
                                                 </tr>
-                                            @endforeach --}}
+                                            @endforeach
 
                                         </tbody>
                                     </table>
@@ -292,19 +293,19 @@
                                             <h6>Filter</h6>
                                         </li>
 
-                                        {{-- <li>
-                                            <a href="{{ route('DbRental') }}"
-                                                class="{{ request()->is('DbRentals') ? 'active' : '' }} dropdown-item">
+                                        <li>
+                                            <a href="{{ route('Dbrental') }}"
+                                                class="{{ request()->is('Dbrentals') ? 'active' : '' }} dropdown-item">
                                                 All Rentals
                                             </a>
-                                        </li> --}}
+                                        </li>
 
-                                        {{-- <li>
-                                            <a href="{{ route('RentalInsert') }}"
-                                                class="{{ request()->is('RentalsInsert') ? 'active' : '' }}  dropdown-item">
+                                        <li>
+                                            <a href="{{ route('rentalInsert') }}"
+                                                class="{{ request()->is('rentalsInsert') ? 'active' : '' }}  dropdown-item">
                                                 Rental Insert
                                             </a>
-                                        </li> --}}
+                                        </li>
                                     </ul>
                                 </div>
 
@@ -316,8 +317,8 @@
                                             <tr>
                                                 <th scope="col">C-Name</th>
                                                 <th scope="col">Car</th>
-                                                <th scope="col">Rental Date</th>
-                                                <th scope="col">Return Date</th>
+                                                {{-- <th scope="col">Rental Date</th>
+                                                <th scope="col">Return Date</th> --}}
                                                 <th scope="col">Amount</th>
                                                 <th scope="col">Status</th>
                                                 <th scope="col">Date Time</th>
@@ -325,14 +326,14 @@
                                         </thead>
                                         <tbody>
 
-                                            {{-- @foreach ($recentRental as $cl)
+                                            @foreach ($recentRental as $cl)
                                                 <tr>
 
                                                     <td>{{ $cl->Customers->name }}</td>
-                                                    <td>{{ $cl->Cars->Car_number }}</td>
-                                                    <td>{{ $cl->check_in_date }}</td>
-                                                    <td>{{ $cl->check_out_date }}</td>
-                                                    <td>{{ $cl->total_amount }}</td>
+                                                    <td>{{ $cl->cars->Model }}</td>
+                                                    {{-- <td>{{ $cl->rental_date }}</td>
+                                                    <td>{{ $cl->return_date }}</td> --}}
+                                                    <td>{{ $cl->total }}</td>
                                                     <td>
                                                         @if ($cl->status == 1)
                                                             <option value="1">Booked</option>
@@ -343,7 +344,7 @@
                                                         @endif
                                                     </td>
                                                     <td>{{ $cl->updated_at = date('Y-m-d') }}</td>
-                                            @endforeach --}}
+                                            @endforeach
                                         </tbody>
                                     </table>
 
@@ -369,19 +370,19 @@
                                     <h6>Filter</h6>
                                 </li>
 
-                                {{-- <li>
-                                    <a href="{{ route('DbCar') }}"
-                                        class="{{ request()->is('DbCars') ? 'active' : '' }} dropdown-item">
+                                <li>
+                                    <a href="{{ route('Dbcar') }}"
+                                        class="{{ request()->is('Dbcars') ? 'active' : '' }} dropdown-item">
                                         All Cars
                                     </a>
-                                </li> --}}
+                                </li>
 
-                                {{-- <li>
-                                    <a href="{{ route('CarInsert') }}"
-                                        class="{{ request()->is('CarsInsert') ? 'active' : '' }}  dropdown-item">
+                                <li>
+                                    <a href="{{ route('carInsert') }}"
+                                        class="{{ request()->is('carsInsert') ? 'active' : '' }}  dropdown-item">
                                         Car Insert
                                     </a>
-                                </li> --}}
+                                </li>
                             </ul>
                         </div>
 
@@ -389,23 +390,24 @@
                             <h5 class="card-title">Cars <span>| Today</span></h5>
 
                             <div class="news">
-                                {{-- @foreach ($recentCar as $rt)
+                                @foreach ($recentCar as $rt)
                                     <div class="post-item clearfix">
-                                        <img style="width:80px; hight:100px; " src="/{{ $rt->img }}" alt="">
+                                        <img style="width:80px; hight:100px; " src="{{ $rt->img }}" alt="">
                                         
-                                        <h4>PRICE : {{ $rt->price_per_night }}</h4>
-                                        <h4><a href="#">
-                                            @if ($rt->availability_status == 1)
-                                                <option value="1">Available</option>
-                                            @elseif ($rt->availability_status == 2)
-                                                <option value="2">Occupied</option>
-                                            @else
-                                                <option value="3">Under Maintenance</option>
+                                        <h4>PRICE : {{ $rt->daily_rate}}</h4>
+                                        <h4>
+                                            @if ($rt->status == 1)
+                                                    <option value="1">Available</option>
+                                                @elseif ($rt->status == 2)
+                                                    <option value="2">Ranted</option>
+                                                @else
+                                                    <option value="3">Under Maintenance</option>
                                             @endif
                                         </h4>
 
                                     </div>
-                                @endforeach --}}
+                                    <hr>
+                                @endforeach
 
                             </div><!-- End sidebar recent posts-->
 
