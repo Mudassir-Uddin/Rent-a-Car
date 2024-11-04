@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\carsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\customersController;
+use App\Http\Controllers\DbBookingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\payment_methodController;
 use App\Http\Controllers\paymentsController;
@@ -101,3 +103,14 @@ Route::post('/passupdate/{id}', [DashboardController::class,'pasupdate']);
 Route::get('/WebProfileedit/{id}', [HomeController::class,'profiles'])->name('Profile');
 Route::post('/WebProfileupdate/{id}', [HomeController::class,'update']);
 
+// Db Booking
+
+Route::get('/DbBookings', [DbBookingController::class,'Booking_Details'])->name('DbBooking')->middleware('admin');
+Route::post('/DbBookingConfirm/{id}', [DbBookingController::class,'Booking_Confirm'])->name('DbBookingConfirm')->middleware('admin');
+Route::get('/Bookingdelete/{id}', [DbBookingController::class,'delete'])->middleware('a');
+
+//___ Booking ____
+Route::get('/Booking/{id}', [BookingController::class,'Booking'])->name('Booking');
+Route::get('/Booking_Details', [BookingController::class,'Booking_Details'])->name('Booking_Details');
+Route::post('/BookingPost/{productId}', [BookingController::class,'BookingPost'])->name('BookingPost');
+Route::post('/BookingConfirm/{id}', [BookingController::class,'Booking_Confirm'])->name('BookingConfirm');

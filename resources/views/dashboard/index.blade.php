@@ -336,12 +336,15 @@
                                                     <td>{{ $cl->total }}</td>
                                                     <td>
                                                         @if ($cl->status == 1)
-                                                            <option value="1">Booked</option>
-                                                        @elseif ($cl->status == 2)
-                                                            <option value="2">Checked-In</option>
-                                                        @else
-                                                            <option value="3">Cancelled</option>
-                                                        @endif
+                                                        <option value="1">Available</option>
+                                                    @elseif ($cl->status == 2)
+                                                        <option value="2">Rented</option>
+                                                        {{-- @endforeach --}}
+                                                    @elseif ($cl->status == 3)
+                                                        <option value="3">Maintenance</option>
+                                                    @else
+                                                        <option value="4">Reserved</option>
+                                                    @endif
                                                     </td>
                                                     <td>{{ $cl->updated_at = date('Y-m-d') }}</td>
                                             @endforeach

@@ -471,7 +471,7 @@
 
         
         <li class="nav-item">
-            <a class="nav-link collapsed" href="{{ url('/') }}">
+            <a class="nav-link collapsed" href="{{ url('/Booking_Details') }}">
                 <i class="bi bi-check-circle"></i>
                 <span>Booking</span>
             </a>
