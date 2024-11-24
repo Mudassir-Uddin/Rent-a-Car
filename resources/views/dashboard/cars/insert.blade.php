@@ -25,14 +25,16 @@
 
                                 @csrf
 
-                                <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingText" name="make"
-                                        value="{{ old('make') }}" placeholder="make">
-                                    <label for="floatingText">make</label>
-                                    @error('make')
-                                        <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
+                                <select name="brand_id" id="" class="form-select mb-3">
+                                    <option value="0" selected disabled>Select Brand</option>
+                                    @foreach ($BrandId as $sr)
+                                    {{-- @if ($rental == $rentals->rental_date || $rentals->return_date) --}}
+                                    {{-- <option disabled value="{{ $sr->id }}">{{ $sr->registration_number }}</option> --}}
+                                    {{-- @else --}}
+                                    <option value="{{ $sr->id }}">{{ $sr->name }}</option>
+                                    {{-- @endif --}}
+                                    @endforeach
+                                </select>
 
                                 <div class="form-floating mb-3">
                                     <input type="text" name="Model" class="form-control" value="{{ old('Model') }}"
@@ -72,14 +74,27 @@
                                     @enderror
                                 </div>
 
-                                <div class="form-floating mb-3">
-                                    <input type="text" name="color" class="form-control" value="{{ old('color') }}"
-                                        id="floatingText" placeholder="color">
-                                    <label for="floatingText">color</label>
-                                    @error('color')
-                                        <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                                </div>
+                                <select name="color_id" id="" class="form-select mb-3">
+                                    <option value="0" selected disabled>Select Color</option>
+                                    @foreach ($ColorId as $sr)
+                                    {{-- @if ($rental == $rentals->rental_date || $rentals->return_date) --}}
+                                    {{-- <option disabled value="{{ $sr->id }}">{{ $sr->registration_number }}</option> --}}
+                                    {{-- @else --}}
+                                    <option value="{{ $sr->id }}">{{ $sr->name }}</option>
+                                    {{-- @endif --}}
+                                    @endforeach
+                                </select>
+
+                                <select name="car_id" id="" class="form-select mb-3">
+                                    <option value="0" selected disabled>Select Transmission Type</option>
+                                    @foreach ($TransmissionId as $sr)
+                                    {{-- @if ($rental == $rentals->rental_date || $rentals->return_date) --}}
+                                    {{-- <option disabled value="{{ $sr->id }}">{{ $sr->registration_number }}</option> --}}
+                                    {{-- @else --}}
+                                    <option value="{{ $sr->id }}">{{ $sr->name }}</option>
+                                    {{-- @endif --}}
+                                    @endforeach
+                                </select>
 
                                 <div class="form-floating mb-3">
                                     <input type="number" name="daily_rate" class="form-control"

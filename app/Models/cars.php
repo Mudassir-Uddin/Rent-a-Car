@@ -11,4 +11,12 @@ class cars extends Model
     
     protected $table = "cars";
     protected $primaryKey = "id";
+    public function brand()
+    {
+        return $this->belongsTo(brands::class, 'brand_id');
+    }
+    public function color()
+    {
+        return $this->belongsTo(colors::class, 'color_id');
+    }
 }

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\brands;
 use App\Models\cars;
+use App\Models\colors;
+use App\Models\transmissions;
 use Illuminate\Http\Request;
 
 class carsController extends Controller
@@ -16,7 +19,10 @@ class carsController extends Controller
     }
     function insert()
     {
-        return view('dashboard.cars.insert');
+        $BrandId = brands::all();
+        $ColorId = colors::all();
+        $TransmissionId = transmissions::all();
+        return view('dashboard.cars.insert',compact('BrandId','ColorId','TransmissionId'));
     }
 
     function Store(Request $req)

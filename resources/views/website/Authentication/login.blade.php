@@ -43,7 +43,8 @@
                             </div>
 
                             <button style="background-color:#ffffff; border-color:#ffffff; color:#000;" class="btn btn-primary py-3 w-100 mb-4">Login</button>
-                            <a href="/"  style="color:#ffffff;">Back To Home :)</a>
+                            <a href="/register"  style="color:#ffffff;">Sign Up :-</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href="/"  style="color:#ffffff;">Back To Home :)</a> 
                         </form>
                     </div>
                 </div>

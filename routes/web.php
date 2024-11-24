@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\brandsController;
 use App\Http\Controllers\carsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\customersController;
@@ -114,3 +115,12 @@ Route::get('/Booking/{id}', [BookingController::class,'Booking'])->name('Booking
 Route::get('/Booking_Details', [BookingController::class,'Booking_Details'])->name('Booking_Details');
 Route::post('/BookingPost/{productId}', [BookingController::class,'BookingPost'])->name('BookingPost');
 Route::post('/BookingConfirm/{id}', [BookingController::class,'Booking_Confirm'])->name('BookingConfirm');
+
+// DB brand
+
+Route::get('/Dbbrands', [brandsController::class, 'brands'])->name('Dbbrand');
+Route::get('/brandsInsert', [brandsController::class, 'insert'])->name('brandInsert');
+Route::post('/brandsStore', [brandsController::class, 'Store']);
+Route::get('/brandsedit/{id}', [brandsController::class, 'edit']);
+Route::post('/brandsupdate/{id}', [brandsController::class, 'update']);
+Route::get('/brandsdelete/{id}', [brandsController::class, 'delete']);
