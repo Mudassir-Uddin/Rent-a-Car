@@ -3,7 +3,7 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>brand Edit</h1>
+            <h1>Color Edit</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/Admindashboard">Home</a></li>
@@ -18,33 +18,18 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Brand Form</h5>
-                            <form action="{{ url('/brandsupdate') }}/{{ $brand->id }}" method="POST"
+                            <h5 class="card-title">color Form</h5>
+                            <form action="{{ url('/colorsupdate') }}/{{ $color->id }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingText" value="{{ $brand->name }}"
+                                    <input type="text" class="form-control" id="floatingText" value="{{ $color->name }}"
                                         name="name" placeholder="jhondoe">
-                                    <label for="floatingText">brand name</label>
+                                    <label for="floatingText">color name</label>
                                     @error('name')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
-                                </div>
-
-
-                                <div class="mb-3">
-                                    <label for="formFileLg" class="form-label">brand Image</label>
-                                    <input class="form-control  form-control " name="img" id="formFileLg"
-                                        type="file">
-                                    @error('img')
-                                        <p class="text-danger">{{ $message }}</p>
-                                    @enderror
-                                    <br>
-                                    @if ($brand->img != null)
-                                        Old Image : <img src="{{ url($brand->img) }}" class="img-fluid rounded" width="80px"
-                                            height="50px" />
-                                    @endif
                                 </div>
 
                                 <button type="submit" class="btn btn-primary py-3 w-100 mb-4">eidt</button>

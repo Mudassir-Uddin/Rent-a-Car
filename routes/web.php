@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\brandsController;
 use App\Http\Controllers\carsController;
+use App\Http\Controllers\colorsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\customersController;
 use App\Http\Controllers\DbBookingController;
@@ -124,3 +125,12 @@ Route::post('/brandsStore', [brandsController::class, 'Store']);
 Route::get('/brandsedit/{id}', [brandsController::class, 'edit']);
 Route::post('/brandsupdate/{id}', [brandsController::class, 'update']);
 Route::get('/brandsdelete/{id}', [brandsController::class, 'delete']);
+
+// DB color
+
+Route::get('/Dbcolors', [colorsController::class, 'colors'])->name('Dbcolor');
+Route::get('/colorsInsert', [colorsController::class, 'insert'])->name('colorInsert');
+Route::post('/colorsStore', [colorsController::class, 'Store']);
+Route::get('/colorsedit/{id}', [colorsController::class, 'edit']);
+Route::post('/colorsupdate/{id}', [colorsController::class, 'update']);
+Route::get('/colorsdelete/{id}', [colorsController::class, 'delete']);

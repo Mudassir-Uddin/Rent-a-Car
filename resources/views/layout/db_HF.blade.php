@@ -361,7 +361,6 @@
                 </li>
             </ul>
         </li><!-- End Customers Nav -->
-
         
         <li class="nav-item">
             <a class="nav-link collapsed"
@@ -382,8 +381,28 @@
                     </a>
                 </li>
             </ul>
-        </li><!-- End Customers Nav -->
+        </li><!-- End Brands Nav -->
 
+        <li class="nav-item">
+            <a class="nav-link collapsed"
+                class=" {{ request()->is('Dbcolors') ? 'active' : '' }} || {{ request()->is('colorsInsert') ? 'active' : '' }}"
+                data-bs-target="#colors-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-palette-fill"></i><span>colors</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="colors-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('Dbcolor') }}" class="{{ request()->is('Dbcolors') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>All colors</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('colorInsert') }}"
+                        class="{{ request()->is('colorsInsert') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>colors Insert</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Colors Nav -->
         
         <li class="nav-item">
             <a class="nav-link collapsed"
