@@ -47,9 +47,9 @@
                                         <th scope="row">{{ ++$count }}</th>
                                         <th>
                                             {{-- <a href="{{$item->rentals->img}}" data-lightbox="roadtrip" class="data"><img src="{{$item->rentals->img}}" width="50px" height="50px" alt=""></a> --}}
-                                            <img src="{{$item->rentals->cars->img}}" width="50px" height="50px" alt="">
+                                            <img src="{{$item->cars->img}}" width="50px" height="50px" alt="">
                                         </th>
-                                        <td>{{$item->rentals->cars->Model}}</td>
+                                        <td>{{$item->cars->Model}}</td>
                                         {{-- <td><img src="{{$item[0]->img}}" alt=""></td> --}}
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>

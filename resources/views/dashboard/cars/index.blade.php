@@ -52,7 +52,7 @@
                                     @foreach ($cars as $ct)
                                         <tr>
                                             <th scope="row">{{ ++$i }}</th>
-                                            <td>{{ $ct->make }}</td>
+                                            <td>{{ $ct->brand->name }}</td>
                                             <td>{{ $ct->Model }}</td>
 
                                             <td><a href="{{ $ct->img }}" data-lightbox="roadtrip" class="data"><img
@@ -62,7 +62,7 @@
                                             {{-- <td>{{ $ct->date }}</td> --}}
                                             <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $ct->date)->format('Y') }}</td>
                                             <td>{{ $ct->registration_number }}</td>
-                                            <td>{{ $ct->color }}</td>
+                                            <td>{{ $ct->color->name }}</td>
                                             <td>{{ $ct->daily_rate }}</td>
                                             <td>
                                                 @if ($ct->status == 1)

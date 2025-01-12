@@ -26,7 +26,7 @@
                                 @csrf
 
                                 <select name="brand_id" id="" class="form-select mb-3">
-                                    <option value="0" selected disabled>Select Brand</option>
+                                    {{-- <option value="0" selected disabled>Select Brand</option> --}}
                                     @foreach ($BrandId as $sr)
                                     {{-- @if ($rental == $rentals->rental_date || $rentals->return_date) --}}
                                     {{-- <option disabled value="{{ $sr->id }}">{{ $sr->registration_number }}</option> --}}
@@ -85,7 +85,7 @@
                                     @endforeach
                                 </select>
 
-                                <select name="car_id" id="" class="form-select mb-3">
+                                <select name="transmission_id" id="" class="form-select mb-3">
                                     <option value="0" selected disabled>Select Transmission Type</option>
                                     @foreach ($TransmissionId as $sr)
                                     {{-- @if ($rental == $rentals->rental_date || $rentals->return_date) --}}

@@ -26,5 +26,6 @@ class IsAdminMiddleware
             return redirect('/');
         }
         return redirect('/login');
+
     }
 }

@@ -404,6 +404,28 @@
             </ul>
         </li><!-- End Colors Nav -->
         
+
+        <li class="nav-item">
+            <a class="nav-link collapsed"
+                class=" {{ request()->is('Dbtransmissions') ? 'active' : '' }} || {{ request()->is('transmissionsInsert') ? 'active' : '' }}"
+                data-bs-target="#transmissions-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-sign-intersection-t-fill"></i><span>transmissions</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="transmissions-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('Dbtransmission') }}" class="{{ request()->is('Dbtransmissions') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>All transmissions</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('transmissionInsert') }}"
+                        class="{{ request()->is('transmissionsInsert') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>transmissions Insert</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Transmissions Nav -->
+
         <li class="nav-item">
             <a class="nav-link collapsed"
                 class=" {{ request()->is('Dbcars') ? 'active' : '' }} || {{ request()->is('carsInsert') ? 'active' : '' }}"

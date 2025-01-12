@@ -19,8 +19,10 @@ class AuthenticationController extends Controller
       {
            $req->validate([
               'name' => 'required | max:50 | min:3',
+              'img' => 'nullable',
               'email' => 'required|email|unique:user,email',
-              'pass' => 'required | min:6'
+              'pass' => 'required | min:6',
+              'status' => 'nullable'
           ]);
   
               $user = new Users;

@@ -53,41 +53,7 @@
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                     {{-- {{session()->get('role')==2 ?  "Manager" : "Admin"  }} --}}
-                                    @if (session()->has('role') && session('role') == 1)
-                                        <label for="formFileLg" class="form-label">Role</label>
-                                        <select name="role" id="" class="form-select mb-3">
-                                            {{-- @foreach ($Service as $sr) --}}
-                                            @if ($user->role == 1)
-                                                <option value="1">---Admin---</option>
-                                            @elseif ($user->role == 3)
-                                                <option value="3">---Manager---</option>
-                                            @else
-                                                <option value="2">---User---</option>
-                                            @endif
-
-                                            <option value="1">Admin</option>
-                                            <option value="3">Manager</option>
-                                            <option value="2">User</option>
-
-
-                                            {{-- @endforeach --}}
-                                        </select>
-
-
-                                        <label for="formFileLg" class="form-label">Status</label>
-                                        <select name="status" id="" class="form-select mb-3">
-                                            @if ($user->status == 1)
-                                                {{-- @foreach ($Service as $sr) --}}
-                                                <option value="1">---Active---</option>
-                                            @else
-                                                <option value="2">---Unactive---</option>
-                                                {{-- @endforeach --}}
-                                            @endif
-                                            <option value="1">Active</option>
-                                            <option value="2">Unactive</option>
-                                        </select>
-                                    @else
-                                    @endif
+                                    
 
                                 </div>
 

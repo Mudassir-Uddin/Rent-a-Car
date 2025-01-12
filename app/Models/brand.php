@@ -5,11 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class colors extends Model
+class brand extends Model
 {
     //
+    
     use HasFactory;
     
-    protected $table = "color";
+    protected $table = "brand";
     protected $primaryKey = "id";
 }

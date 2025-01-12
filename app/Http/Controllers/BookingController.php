@@ -25,11 +25,11 @@ class BookingController extends Controller
             'address' => 'required|string|max:255'
         ]);
 
-        $CurrentUserId = Session::get("id");
+        $CurrentUserId = Session::get(key: "id");
         
         $book = new Booking();
         $book->user_id = $CurrentUserId;
-        $book->rental_id = $productId;
+        $book->car_id = $productId;
         $book->name = $req->name;
         $book->email = $req->email;
         $book->phone = $req->phone;
@@ -49,7 +49,7 @@ class BookingController extends Controller
         $user = Users::find($CurrentUserId);
 
         
-        $appoin = Booking::where('user_id', $CurrentUserId)->with('user', 'rentals')->get();
+        $appoin = Booking::where('user_id', $CurrentUserId)->with('user', 'cars')->get();
         // dd($appoin);
         $adminbooking = Booking::all();
 
@@ -64,7 +64,7 @@ class BookingController extends Controller
         //     return view('website.Booking.BookingDetails',compact('appoin','role'));
         // }
         // if($role == 1){
-        //     // $appoin = Booking::where('rental_id',$user->user_id)->get();
+        //     // $appoin = Booking::where('car_id',$user->user_id)->get();
         //     // dd($appoin);
         //     $appoin = Booking::all();
         //     return view('website.Booking.BookingDetails',compact('appoin','role'));

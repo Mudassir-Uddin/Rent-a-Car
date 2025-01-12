@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\brand;
 use App\Models\brands;
 use App\Models\cars;
+use App\Models\color;
 use App\Models\colors;
 use App\Models\transmissions;
 use Illuminate\Http\Request;
@@ -13,14 +15,13 @@ class carsController extends Controller
     //
     function cars()
     {
-
         $cars = cars::all();
         return view('dashboard.cars.index', compact('cars'));
     }
     function insert()
     {
-        $BrandId = brands::all();
-        $ColorId = colors::all();
+        $BrandId = brand::all();
+        $ColorId = color::all();
         $TransmissionId = transmissions::all();
         return view('dashboard.cars.insert',compact('BrandId','ColorId','TransmissionId'));
     }
@@ -29,12 +30,11 @@ class carsController extends Controller
     {
 
         $req->validate([
-            'make' => 'required | max:50 | min:3',
+            'brand_id' => 'required',
             'Model' => 'required | max:50 | min:3',
             'img' => 'required | image | mimes:png,jpg',
             'date' => 'required ',
             // 'registration_number' => 'required|registration_number|unique:cars,registration_number',
-            'color' => 'required | max:50 | min:3',
             'daily_rate' => 'required | max:50 | min:3',
         ]);
 
@@ -45,12 +45,13 @@ class carsController extends Controller
 
 
         $car = new cars;
-        $car->make = $req->make;
+        $car->brand_id = $req->brand_id;
         $car->Model = $req->Model;
         $car->img = "images/Carsimages/$imgname";
         $car->date = $req->date;
         $car->registration_number = $req->registration_number;
-        $car->color = $req->color;
+        $car->color_id = $req->color_id;
+        $car->transmission_id = $req->transmission_id;
         $car->daily_rate = $req->daily_rate;
         $car->status = $req->status;
         $car->save();

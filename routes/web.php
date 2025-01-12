@@ -12,6 +12,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\payment_methodController;
 use App\Http\Controllers\paymentsController;
 use App\Http\Controllers\rentalsController;
+use App\Http\Controllers\transmissionController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\IsAdminMiddleware;
@@ -107,9 +108,9 @@ Route::post('/WebProfileupdate/{id}', [HomeController::class,'update']);
 
 // Db Booking
 
-Route::get('/DbBookings', [DbBookingController::class,'Booking_Details'])->name('DbBooking')->middleware('admin');
-Route::post('/DbBookingConfirm/{id}', [DbBookingController::class,'Booking_Confirm'])->name('DbBookingConfirm')->middleware('admin');
-Route::get('/Bookingdelete/{id}', [DbBookingController::class,'delete'])->middleware('a');
+Route::get('/DbBookings', [BookingController::class,'Booking_Details'])->name('DbBooking')->middleware('admin');
+Route::post('/DbBookingConfirm/{id}', [BookingController::class,'Booking_Confirm'])->name('DbBookingConfirm')->middleware('admin');
+Route::get('/Bookingdelete/{id}', [BookingController::class,'delete'])->middleware('a');
 
 //___ Booking ____
 Route::get('/Booking/{id}', [BookingController::class,'Booking'])->name('Booking');
@@ -134,3 +135,13 @@ Route::post('/colorsStore', [colorsController::class, 'Store']);
 Route::get('/colorsedit/{id}', [colorsController::class, 'edit']);
 Route::post('/colorsupdate/{id}', [colorsController::class, 'update']);
 Route::get('/colorsdelete/{id}', [colorsController::class, 'delete']);
+
+
+// DB transmission
+
+Route::get('/Dbtransmissions', [transmissionController::class, 'transmissions'])->name('Dbtransmission');
+Route::get('/transmissionsInsert', [transmissionController::class, 'insert'])->name('transmissionInsert');
+Route::post('/transmissionsStore', [transmissionController::class, 'Store']);
+Route::get('/transmissionsedit/{id}', [transmissionController::class, 'edit']);
+Route::post('/transmissionsupdate/{id}', [transmissionController::class, 'update']);
+Route::get('/transmissionsdelete/{id}', [transmissionController::class, 'delete']);

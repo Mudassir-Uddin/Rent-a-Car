@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\color;
 use App\Models\colors;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,7 @@ class colorsController extends Controller
     //
      function colors(){
         
-        $colors = colors::all();
+        $colors = color::all();
         return view('dashboard.colors.index',compact('colors'));
     }
     function insert()
@@ -25,7 +26,7 @@ class colorsController extends Controller
             'name' => 'required | max:50 | min:3'
         ]);
         
-          $color = new colors;
+          $color = new color    ;
             $color->name = $req->name;
             $color->save();
        
@@ -34,12 +35,12 @@ class colorsController extends Controller
     }
     function edit($id)
     {
-        $color = colors::Where('id', $id/548548)->first();
+        $color = color::Where('id', $id/548548)->first();
         return view('dashboard.colors.edit', compact('color'));
     }
     function update(Request $req, $id)
     {
-        $color = colors::find($id);
+        $color = color::find($id);
         
             $color->name = $req->name;
         
@@ -50,7 +51,7 @@ class colorsController extends Controller
 
     function delete($id)
     {
-        $st = colors::find($id);
+        $st = color::find($id);
 
         if ($st) {
             $st->delete();

@@ -11,12 +11,19 @@ class cars extends Model
     
     protected $table = "cars";
     protected $primaryKey = "id";
+
     public function brand()
     {
-        return $this->belongsTo(brands::class, 'brand_id');
+        return $this->belongsTo(brand::class, 'brand_id');
     }
+
     public function color()
     {
-        return $this->belongsTo(colors::class, 'color_id');
+        return $this->belongsTo(color::class, 'color_id');
+    }
+
+    public function transmission__type()
+    {
+        return $this->belongsTo(transmissions::class, 'transmission_id');
     }
 }

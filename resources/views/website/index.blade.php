@@ -159,9 +159,9 @@
 									<div class="featured-model-info">
 										<p>
 											model:{{ \Carbon\Carbon::createFromFormat('Y-m-d', $cr->date)->format('Y') }}
-											<span class="featured-mi-span"> {{$cr->make}}</span> 
-											<span class="featured-hp-span">{{$cr->color}}</span>
-											 automatic
+											<span class="featured-mi-span"> {{$cr->brand->name}}</span> 
+											<span class="featured-hp-span">{{$cr->color->name}}</span>
+											{{$cr->transmission__type->name}}
 										</p>
 									</div>
 								</div>

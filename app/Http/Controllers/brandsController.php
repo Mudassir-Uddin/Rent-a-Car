@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\brand;
 use App\Models\brands;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,7 @@ class brandsController extends Controller
     //
     function brands(){
         
-        $brands = brands::all();
+        $brands = brand::all();
         return view('dashboard.brands.index',compact('brands'));
     }
     function insert()
@@ -31,7 +32,7 @@ class brandsController extends Controller
         $imgname = time() . "__" . $imgname;
         $img->move("images/Brandsimages/", $imgname);
 
-            $brand = new brands;
+            $brand = new brand;
             $brand->name = $req->name;
             $brand->img = "images/Brandsimages/$imgname";
             $brand->save();
@@ -41,12 +42,12 @@ class brandsController extends Controller
     }
     function edit($id)
     {
-        $brand = brands::Where('id', $id/548548)->first();
+        $brand = brand::Where('id', $id/548548)->first();
         return view('dashboard.brands.edit', compact('brand'));
     }
     function update(Request $req, $id)
     {
-        $brand = brands::find($id);
+        $brand = brand::find($id);
         $imgname = $brand->img;
         if ($req->hasfile('img')) {
             
@@ -73,7 +74,7 @@ class brandsController extends Controller
 
     function delete($id)
     {
-        $st = brands::find($id);
+        $st = brand::find($id);
 
         if ($st) {
             if($st->img){

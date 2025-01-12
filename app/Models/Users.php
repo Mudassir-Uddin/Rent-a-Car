@@ -45,4 +45,8 @@ class Users extends Model
     
     protected $table = "user";
     protected $primaryKey = "id";
+    // Define default attributes
+    protected $attributes = [
+        'status' => 1, // Default value for 'status'
+    ];
 }

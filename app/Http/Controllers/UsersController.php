@@ -24,14 +24,20 @@ class UsersController extends Controller
 
         $req->validate([
             'name' => 'required | max:50 | min:3',
+            'img' => 'nullable',
             'email' => 'required|email|unique:user,email',
             'pass' => 'required | min:6'
+
         ]);
 
             $user = new Users;
             $user->name = $req->name;
             $user->email = $req->email;
             $user->password = Hash::make($req->pass);
+            // $user->status = 1;
+            $user->status = 1;
+            $user->role = 2;
+
             if (session()->has('role') && session('role') == 1){
                 
                 $user->status = $req->status;
