@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\customersController;
 use App\Http\Controllers\DbBookingController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\modelsController;
 use App\Http\Controllers\payment_methodController;
 use App\Http\Controllers\paymentsController;
 use App\Http\Controllers\rentalsController;
@@ -145,3 +146,12 @@ Route::post('/transmissionsStore', [transmissionController::class, 'Store']);
 Route::get('/transmissionsedit/{id}', [transmissionController::class, 'edit']);
 Route::post('/transmissionsupdate/{id}', [transmissionController::class, 'update']);
 Route::get('/transmissionsdelete/{id}', [transmissionController::class, 'delete']);
+
+// DB cars
+
+Route::get('/Dbmodels', [modelsController::class, 'models'])->name('Dbmodel');
+Route::get('/modelsInsert', [modelsController::class, 'insert'])->name('modelInsert');
+Route::post('/modelsStore', [modelsController::class, 'Store']);
+Route::get('/modelsedit/{id}', [modelsController::class, 'edit']);
+Route::post('/modelsupdate/{id}', [modelsController::class, 'update']);
+Route::get('/modelsdelete/{id}', [modelsController::class, 'delete']);

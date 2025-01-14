@@ -383,6 +383,28 @@
             </ul>
         </li><!-- End Brands Nav -->
 
+        
+        <li class="nav-item">
+            <a class="nav-link collapsed"
+                class=" {{ request()->is('Dbmodels') ? 'active' : '' }} || {{ request()->is('modelsInsert') ? 'active' : '' }}"
+                data-bs-target="#models-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-bing"></i><span>Models</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="models-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('Dbmodel') }}" class="{{ request()->is('Dbmodels') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>All Models</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('modelInsert') }}"
+                        class="{{ request()->is('modelsInsert') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Models Insert</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End models Nav -->
+
         <li class="nav-item">
             <a class="nav-link collapsed"
                 class=" {{ request()->is('Dbcolors') ? 'active' : '' }} || {{ request()->is('colorsInsert') ? 'active' : '' }}"

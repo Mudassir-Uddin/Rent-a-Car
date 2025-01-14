@@ -24,21 +24,29 @@
                                 @csrf
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingText" value="{{ $car->make }}"
-                                        name="make" placeholder="jhondoe">
-                                    <label for="floatingText">car make</label>
-                                    @error('make')
-                                        <p class="text-danger">{{ $message }}</p>
-                                    @enderror
+                                    <select name="brand_id" id="" class="form-select mb-3">
+                                        @foreach ($BrandId as $ct)
+                                            {{-- <option value="0">Select SubServices</option> --}}
+                                            @if ($ct->id == $ct->brand_id)
+                                                <option value="{{$ct->id}}" selected>{{$ct->name}}</option>
+                                            @else
+                                                <option value="{{$ct->id}}">{{$ct->name}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingText" value="{{ $car->Model }}"
-                                        name="Model" placeholder="jhondoe">
-                                    <label for="floatingText">car Model</label>
-                                    @error('Model')
-                                        <p class="text-danger">{{ $message }}</p>
-                                    @enderror
+                                    <select name="Model" id="" class="form-select mb-3">
+                                        @foreach ($ModelId as $ct)
+                                            {{-- <option value="0">Select SubServices</option> --}}
+                                            @if ($ct->id == $ct->model_id)
+                                                <option value="{{$ct->id}}" selected>{{$ct->name}}</option>
+                                            @else
+                                                <option value="{{$ct->id}}">{{$ct->name}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="mb-3">
@@ -75,12 +83,29 @@
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="Text" class="form-control" id="floatingText"
-                                        value="{{ $car->color }}" name="color" placeholder="color">
-                                    <label for="floatingText">color</label>
-                                    @error('color')
-                                        <p class="text-danger">{{ $message }}</p>
-                                    @enderror
+                                    <select name="color_id" id="" class="form-select mb-3">
+                                        @foreach ($ColorId as $ct)
+                                            {{-- <option value="0">Select SubServices</option> --}}
+                                            @if ($ct->id == $ct->color_id)
+                                                <option value="{{$ct->id}}" selected>{{$ct->name}}</option>
+                                            @else
+                                                <option value="{{$ct->id}}">{{$ct->name}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                                
+                                <div class="form-floating mb-3">
+                                    <select name="transmission_id" id="" class="form-select mb-3">
+                                        @foreach ($TransmissionId as $ct)
+                                            {{-- <option value="0">Select SubServices</option> --}}
+                                            @if ($ct->id == $ct->transmission_id)
+                                                <option value="{{$ct->id}}" selected>{{$ct->name}}</option>
+                                            @else
+                                                <option value="{{$ct->id}}">{{$ct->name}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="form-floating mb-3">

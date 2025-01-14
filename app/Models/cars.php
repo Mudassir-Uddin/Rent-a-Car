@@ -16,6 +16,10 @@ class cars extends Model
     {
         return $this->belongsTo(brand::class, 'brand_id');
     }
+    public function models()
+    {
+        return $this->belongsTo(models::class, 'model_id');
+    }
 
     public function color()
     {

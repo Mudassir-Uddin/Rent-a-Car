@@ -7,6 +7,7 @@ use App\Models\brands;
 use App\Models\cars;
 use App\Models\color;
 use App\Models\colors;
+use App\Models\models;
 use App\Models\transmissions;
 use Illuminate\Http\Request;
 
@@ -22,8 +23,9 @@ class carsController extends Controller
     {
         $BrandId = brand::all();
         $ColorId = color::all();
+        $ModelId = models::all();
         $TransmissionId = transmissions::all();
-        return view('dashboard.cars.insert',compact('BrandId','ColorId','TransmissionId'));
+        return view('dashboard.cars.insert',compact('BrandId','ColorId','ModelId','TransmissionId'));
     }
 
     function Store(Request $req)
@@ -31,7 +33,6 @@ class carsController extends Controller
 
         $req->validate([
             'brand_id' => 'required',
-            'Model' => 'required | max:50 | min:3',
             'img' => 'required | image | mimes:png,jpg',
             'date' => 'required ',
             // 'registration_number' => 'required|registration_number|unique:cars,registration_number',
@@ -61,8 +62,12 @@ class carsController extends Controller
     }
     function edit($id)
     {
+        $BrandId = brand::all();
+        $ColorId = color::all();
+        $ModelId = models::all();
+        $TransmissionId = transmissions::all();
         $car = cars::Where('id', $id / 548548)->first();
-        return view('dashboard.cars.edit', compact('car'));
+        return view('dashboard.cars.edit',compact('car','BrandId','ColorId','ModelId','TransmissionId'));
     }
     function update(Request $req, $id)
     {
@@ -81,12 +86,13 @@ class carsController extends Controller
                 }
             }
         }
-        $car->make = $req->make;
+        $car->brand_id = $req->brand_id;
+        // $car->make = $req->make;
         $car->Model = $req->Model;
         $car->img = $imgname;
         $car->date = $req->date;
         $car->registration_number = $req->registration_number;
-        $car->color = $req->color;
+        $car->color_id = $req->color_id;
         $car->daily_rate = $req->daily_rate;
         $car->status = $req->status;
 
