@@ -22,7 +22,8 @@ use App\Http\Middleware\IsAdminMiddleware;
 //     return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'index'])->name('/');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/Cars', [HomeController::class, 'cars'])->name('cars');
 
 
 // Dashboard
@@ -155,3 +156,7 @@ Route::post('/modelsStore', [modelsController::class, 'Store']);
 Route::get('/modelsedit/{id}', [modelsController::class, 'edit']);
 Route::post('/modelsupdate/{id}', [modelsController::class, 'update']);
 Route::get('/modelsdelete/{id}', [modelsController::class, 'delete']);
+
+
+// Route::get('product/{id}', [HomeController::class,'brandscars'])->name('brandscars');
+

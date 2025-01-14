@@ -49,6 +49,49 @@
     <!--responsive.css-->
     <link rel="stylesheet" href="{{ url('/Website/assets/css/responsive.css') }}">
 
+
+    <style>
+        .pagination {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+    
+        .pagination li {
+            display: inline-block;
+        }
+    
+        .pagination li a,
+        .pagination li span {
+            color: #333;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 8px 12px;
+            margin: 0 2px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+    
+        .pagination li a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+    
+        .pagination li.active span {
+            background-color: #007bff;
+            color: #fff;
+            border-color: #007bff;
+        }
+    
+        .pagination li.disabled span {
+            color: #6c757d;
+            background-color: #e9ecef;
+            border-color: #dee2e6;
+            pointer-events: none;
+        }
+    </style>
+    
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 
@@ -90,11 +133,11 @@
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
                             <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-                                <li class=" scroll"><a href="{{url('home')}}">home</a></li>
+                                <li class=" scroll active"><a href="#home">home</a></li>
                                 <li class="scroll"><a href="#service">service</a></li>
                                 {{-- <li class="scroll"><a href="#featured-cars">featured cars</a></li>
 				                    <li class="scroll"><a href="#new-cars">new cars</a></li> --}}
-                                <li class="scroll"><a href="{{ url('cars') }}" class="{{ request()->is('Cars') ? 'active' : '' }}">brands</a></li>
+                                <li class="scroll"><a href="{{ url('Cars') }}">brands</a></li>
                                 <li class="scroll"><a href="#contact">contact</a></li>
                                 @php
                                     use App\Models\users;
@@ -144,124 +187,10 @@
             </div>
         </div>
 
-        {{-- <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="model-search-content">
-                        <div class="row">
-                            <div class="col-md-offset-1 col-md-2 col-sm-12">
-                                <div class="single-model-search">
-                                    <h2>select year</h2>
-                                    <div class="model-select-icon">
-                                        <select class="form-control">
-
-                                            <option value="default">year</option><!-- /.option-->
-
-                                            <option value="2018">2018</option><!-- /.option-->
-
-                                            <option value="2017">2017</option><!-- /.option-->
-                                            <option value="2016">2016</option><!-- /.option-->
-
-                                        </select><!-- /.select-->
-                                    </div><!-- /.model-select-icon -->
-                                </div>
-                                <div class="single-model-search">
-                                    <h2>body style</h2>
-                                    <div class="model-select-icon">
-                                        <select class="form-control">
-
-                                            <option value="default">style</option><!-- /.option-->
-
-                                            <option value="sedan">sedan</option><!-- /.option-->
-
-                                            <option value="van">van</option><!-- /.option-->
-                                            <option value="roadster">roadster</option><!-- /.option-->
-
-                                        </select><!-- /.select-->
-                                    </div><!-- /.model-select-icon -->
-                                </div>
-                            </div>
-                            <div class="col-md-offset-1 col-md-2 col-sm-12">
-                                <div class="single-model-search">
-                                    <h2>select make</h2>
-                                    <div class="model-select-icon">
-                                        <select class="form-control">
-
-                                            <option value="default">make</option><!-- /.option-->
-
-                                            <option value="toyota">toyota</option><!-- /.option-->
-
-                                            <option value="holden">holden</option><!-- /.option-->
-                                            <option value="maecedes-benz">maecedes-benz.</option><!-- /.option-->
-
-                                        </select><!-- /.select-->
-                                    </div><!-- /.model-select-icon -->
-                                </div>
-                                <div class="single-model-search">
-                                    <h2>car condition</h2>
-                                    <div class="model-select-icon">
-                                        <select class="form-control">
-
-                                            <option value="default">condition</option><!-- /.option-->
-
-                                            <option value="something">something</option><!-- /.option-->
-
-                                            <option value="something">something</option><!-- /.option-->
-                                            <option value="something">something</option><!-- /.option-->
-
-                                        </select><!-- /.select-->
-                                    </div><!-- /.model-select-icon -->
-                                </div>
-                            </div>
-                            <div class="col-md-offset-1 col-md-2 col-sm-12">
-                                <div class="single-model-search">
-                                    <h2>select model</h2>
-                                    <div class="model-select-icon">
-                                        <select class="form-control">
-
-                                            <option value="default">model</option><!-- /.option-->
-
-                                            <option value="kia-rio">kia-rio</option><!-- /.option-->
-
-                                            <option value="mitsubishi">mitsubishi</option><!-- /.option-->
-                                            <option value="ford">ford</option><!-- /.option-->
-
-                                        </select><!-- /.select-->
-                                    </div><!-- /.model-select-icon -->
-                                </div>
-                                <div class="single-model-search">
-                                    <h2>select price</h2>
-                                    <div class="model-select-icon">
-                                        <select class="form-control">
-
-                                            <option value="default">price</option><!-- /.option-->
-
-                                            <option value="$0.00">$0.00</option><!-- /.option-->
-
-                                            <option value="$0.00">$0.00</option><!-- /.option-->
-                                            <option value="$0.00">$0.00</option><!-- /.option-->
-
-                                        </select><!-- /.select-->
-                                    </div><!-- /.model-select-icon -->
-                                </div>
-                            </div>
-                            <div class="col-md-2 col-sm-12">
-                                <div class="single-model-search text-center">
-                                    <button class="welcome-btn model-search-btn" onclick="window.location.href='#'">
-                                        search
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-
     </section><!--/.welcome-hero-->
     <!--welcome-hero end -->
 
-    @yield('mywebsite')
+    @yield('mycarwebsite')
 
     <!--contact start-->
     <footer id="contact" class="contact">

@@ -147,6 +147,7 @@
 					<p>checkout <span>the</span> featured cars</p>
 					<h2>featured cars</h2>
 				</div><!--/.section-header-->
+
 				<div class="featured-cars-content">
 					<div class="row">
 						@foreach ($cars as $cr)
