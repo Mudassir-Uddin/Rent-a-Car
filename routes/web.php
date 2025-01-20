@@ -22,8 +22,8 @@ use App\Http\Middleware\IsAdminMiddleware;
 //     return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/Cars', [HomeController::class, 'cars'])->name('cars');
+Route::get('/', [HomeController::class, 'index'])->name('/');
+Route::get('/cars', [HomeController::class, 'cars'])->name('cars');
 
 
 // Dashboard
@@ -53,7 +53,7 @@ Route::get('/customersdelete/{id}', [customersController::class, 'delete']);
 
 Route::get('/Dbcars', [carsController::class, 'cars'])->name('Dbcar');
 Route::get('/carsInsert', [carsController::class, 'insert'])->name('carInsert');
-Route::post('/carsStore', [carsController::class, 'Store']);
+Route::post('/carsStore', [carsController::class, 'Store'])->name('carsStore');
 Route::get('/carsedit/{id}', [carsController::class, 'edit']);
 Route::post('/carsupdate/{id}', [carsController::class, 'update']);
 Route::get('/carsdelete/{id}', [carsController::class, 'delete']);
@@ -148,9 +148,12 @@ Route::get('/transmissionsedit/{id}', [transmissionController::class, 'edit']);
 Route::post('/transmissionsupdate/{id}', [transmissionController::class, 'update']);
 Route::get('/transmissionsdelete/{id}', [transmissionController::class, 'delete']);
 
-// DB cars
+// DB Models
 
-Route::get('/Dbmodels', [modelsController::class, 'models'])->name('Dbmodel');
+// Route::get('/getModels/{brandId}', [modelsController::class, 'models'])->name('getModels');
+
+
+Route::get('/Dbmodels/{brandId?}', [modelsController::class, 'models'])->name('Dbmodel');
 Route::get('/modelsInsert', [modelsController::class, 'insert'])->name('modelInsert');
 Route::post('/modelsStore', [modelsController::class, 'Store']);
 Route::get('/modelsedit/{id}', [modelsController::class, 'edit']);

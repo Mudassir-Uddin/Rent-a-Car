@@ -28,44 +28,44 @@
             <div class="featured-cars-content">
                 <div class="row">
                     @if ($cars->isEmpty())
-                    <p class="alert alert-warning text-center mt-4">No cars available for this brand.</p>
-                @else
-                    @foreach ($cars as $cr)
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="single-featured-cars">
-                                <div class="featured-img-box">
-                                    <div class="featured-cars-img">
-                                        <img src="{{ $cr->img }}" alt="cars">
+                        <p class="alert alert-warning text-center mt-4">No cars available for this brand.</p>
+                    @else
+                        @foreach ($cars as $cr)
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <div class="single-featured-cars">
+                                    <div class="featured-img-box">
+                                        <div class="featured-cars-img">
+                                            <img src="{{ $cr->img }}" alt="cars">
+                                        </div>
+                                        <div class="featured-model-info">
+                                            <p>
+                                                model:{{ \Carbon\Carbon::createFromFormat('Y-m-d', $cr->date)->format('Y') }}
+                                                <span class="featured-mi-span"> {{ $cr->brand->name }}</span>
+                                                <span class="featured-hp-span">{{ $cr->color->name }}</span>
+                                                {{ $cr->transmission__type->name }}
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="featured-model-info">
+                                    <div class="featured-cars-txt">
+                                        <h2><a href="#">{{ $cr->models->name ?? 'Unknown Model' }}</a></h2>
+                                        <h3>Rental Price : {{ $cr->daily_rate }}</h3>
                                         <p>
-                                            model:{{ \Carbon\Carbon::createFromFormat('Y-m-d', $cr->date)->format('Y') }}
-                                            <span class="featured-mi-span"> {{ $cr->brand->name }}</span>
-                                            <span class="featured-hp-span">{{ $cr->color->name }}</span>
-                                            {{ $cr->transmission__type->name }}
+                                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+                                            adipisci velit, sed quia non.
                                         </p>
+                                        <a href="{{ url('/Booking') }}/{{ $cr->id }}">Booking</a>
                                     </div>
-                                </div>
-                                <div class="featured-cars-txt">
-                                    <h2><a href="#">{{ $cr->model_id->name ?? 'Unknown Model' }}</a></h2>
-                                    <h3>Rental Price : {{ $cr->daily_rate }}</h3>
-                                    <p>
-                                        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                                        adipisci velit, sed quia non.
-                                    </p>
-                                    <a href="{{ url('/Booking') }}/{{ $cr->id }}">Booking</a>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
                     @endif
                 </div>
                 <!-- Pagination Links -->
-<div class="d-flex justify-content-center mt-4">
-    <ul class="pagination">
-        {{ $cars->links('pagination::bootstrap-4') }}
-    </ul>
-</div>
+                <div class="d-flex justify-content-center mt-4">
+                    <ul class="pagination">
+                        {{ $cars->links('pagination::bootstrap-4') }}
+                    </ul>
+                </div>
 
             </div>
         </div><!--/.container-->

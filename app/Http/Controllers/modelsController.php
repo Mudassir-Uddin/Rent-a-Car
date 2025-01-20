@@ -9,11 +9,25 @@ use Illuminate\Http\Request;
 class modelsController extends Controller
 {
     //
-    function models()
-    {
-        $models = models::all();
-        return view('dashboard.models.index', compact('models'));
+    // function models()
+    // {
+    //     $models = models::all();
+    //     return view('dashboard.models.index', compact('models'));
+    // }
+public function models($brandId = null)
+{
+    if ($brandId) {
+                $models = models::where('brand_id', $brandId)->get();
+            } else {
+                $models = models::all();
+                return view('dashboard.models.index', compact('models'));
+
+            }
+        // \Log::info("Fetching models for brand ID: " . $brandId);
+        // $models = models::where('brand_id', $brandId)->get();
+        return response()->json($models);
     }
+
     function insert()
     {
         $BrandId = brand::all();

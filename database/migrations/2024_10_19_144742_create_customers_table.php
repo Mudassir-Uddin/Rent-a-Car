@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('img')->nullable();
             $table->string('email')->unique();
             $table->tinyText('phone');
-            $table->string('driver_license_number',50)->unique();
+            $table->string('driver_license_number',50)->nullable()->unique();
             $table->string('address');
             $table->timestamps();
         });

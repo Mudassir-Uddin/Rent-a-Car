@@ -53,7 +53,7 @@
                                         <tr>
                                             <th scope="row">{{ ++$i }}</th>
                                             <td>{{ $ct->brand->name }}</td>
-                                            {{-- <td>{{ $ct->models->name }}</td> --}}
+                                            <td>{{ $ct->models->name }}</td>
                                             {{-- <td>{{ $ct->Model }}</td> --}}
 
                                             <td><a href="{{ $ct->img }}" data-lightbox="roadtrip" class="data"><img

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\brand;
-use App\Models\brands;
 use App\Models\cars;
 use App\Models\color;
 use App\Models\colors;
@@ -28,38 +27,73 @@ class carsController extends Controller
         return view('dashboard.cars.insert',compact('BrandId','ColorId','ModelId','TransmissionId'));
     }
 
+    // function Store(Request $req)
+    // {
+
+    //     $req->validate([
+    //         'brand_id' => 'required',
+    //         'img' => 'required | image | mimes:png,jpg',
+    //         'date' => 'required ',
+    //         // 'registration_number' => 'required|registration_number|unique:cars,registration_number',
+    //         'daily_rate' => 'required | max:50 | min:3',
+    //     ]);
+
+    //     $img = $req->img;
+    //     $imgname = $img->getClientOriginalName();
+    //     $imgname = time() . "__" . $imgname;
+    //     $img->move("images/Carsimages/", $imgname);
+
+
+    //     $car = new cars;
+    //     $car->brand_id = $req->brand_id;
+    //     $car->model_id = $req->model_id;
+    //     $car->img = "images/Carsimages/$imgname";
+    //     $car->date = $req->date;
+    //     $car->registration_number = $req->registration_number;
+    //     $car->color_id = $req->color_id;
+    //     $car->transmission_id = $req->transmission_id;
+    //     $car->daily_rate = $req->daily_rate;
+    //     $car->status = $req->status;
+    //     $car->save();
+
+    //     return redirect('/Dbcars');
+
+    // }
+
+
     function Store(Request $req)
-    {
+{
+    $req->validate([
+        'brand_id' => 'required|exists:brand,id',
+        'model_id' => 'required|exists:model,id',
+        'img' => 'required|image|mimes:png,jpg',
+        'date' => 'required',
+        'registration_number' => 'required',
+        'color_id' => 'required',
+        'transmission_id' => 'required',
+        'daily_rate' => 'required|max:50|min:3'
+    ]);
 
-        $req->validate([
-            'brand_id' => 'required',
-            'img' => 'required | image | mimes:png,jpg',
-            'date' => 'required ',
-            // 'registration_number' => 'required|registration_number|unique:cars,registration_number',
-            'daily_rate' => 'required | max:50 | min:3',
-        ]);
+    $img = $req->img;
+    $imgname = time() . "__" . $img->getClientOriginalName();
+    $img->move("images/Carsimages/", $imgname);
 
-        $img = $req->img;
-        $imgname = $img->getClientOriginalName();
-        $imgname = time() . "__" . $imgname;
-        $img->move("images/Carsimages/", $imgname);
+    $car = new cars;
+    $car->brand_id = $req->brand_id;
+    $car->model_id = $req->model_id;
+    $car->img = "images/Carsimages/$imgname";
+    $car->date = $req->date;
+    $car->registration_number = $req->registration_number;
+    $car->color_id = $req->color_id;
+    $car->transmission_id = $req->transmission_id;
+    $car->daily_rate = $req->daily_rate;
+    $car->status = $req->status ?? 'available'; // Default status
+    $car->save();
+
+    return redirect('/Dbcars')->with('success', 'Car added successfully!');
+}
 
 
-        $car = new cars;
-        $car->brand_id = $req->brand_id;
-        $car->Model = $req->Model;
-        $car->img = "images/Carsimages/$imgname";
-        $car->date = $req->date;
-        $car->registration_number = $req->registration_number;
-        $car->color_id = $req->color_id;
-        $car->transmission_id = $req->transmission_id;
-        $car->daily_rate = $req->daily_rate;
-        $car->status = $req->status;
-        $car->save();
-
-        return redirect('/Dbcars');
-
-    }
     function edit($id)
     {
         $BrandId = brand::all();
@@ -88,7 +122,7 @@ class carsController extends Controller
         }
         $car->brand_id = $req->brand_id;
         // $car->make = $req->make;
-        $car->Model = $req->Model;
+        $car->model_id = $req->model_id;
         $car->img = $imgname;
         $car->date = $req->date;
         $car->registration_number = $req->registration_number;

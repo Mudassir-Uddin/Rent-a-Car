@@ -10,7 +10,7 @@ class models extends Model
     //
     use HasFactory;
     
-    protected $table = "models";
+    protected $table = "model";
     protected $primaryKey = "id";
 
     public function brand()

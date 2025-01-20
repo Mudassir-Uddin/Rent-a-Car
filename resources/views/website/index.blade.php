@@ -167,7 +167,7 @@
 									</div>
 								</div>
 								<div class="featured-cars-txt">
-									<h2><a href="#">{{$cr->model_id->name ?? 'Unknown Model'}}</a></h2>
+									<h2><a href="#">{{$cr->models->name ?? 'Unknown Model'}}</a></h2>
 									<h3>Rental Price : {{$cr->daily_rate}}</h3>
 									<p>
 										Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non. 

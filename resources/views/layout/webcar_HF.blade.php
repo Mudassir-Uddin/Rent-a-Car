@@ -137,7 +137,7 @@
                                 <li class="scroll"><a href="#service">service</a></li>
                                 {{-- <li class="scroll"><a href="#featured-cars">featured cars</a></li>
 				                    <li class="scroll"><a href="#new-cars">new cars</a></li> --}}
-                                <li class="scroll"><a href="{{ url('Cars') }}">brands</a></li>
+                                <li class="scroll"><a href="{{ url('cars') }}">brands</a></li>
                                 <li class="scroll"><a href="#contact">contact</a></li>
                                 @php
                                     use App\Models\users;

@@ -35,6 +35,10 @@
     <!-- Template Main CSS File -->
     <link href="{{ url('/dashboard/assets/css/style.css') }}" rel="stylesheet">
 
+    
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -386,13 +390,13 @@
         
         <li class="nav-item">
             <a class="nav-link collapsed"
-                class=" {{ request()->is('Dbmodels') ? 'active' : '' }} || {{ request()->is('modelsInsert') ? 'active' : '' }}"
+                class=" {{ request()->is('Dbmodels/{brandId}') ? 'active' : '' }} || {{ request()->is('modelsInsert') ? 'active' : '' }}"
                 data-bs-target="#models-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-bing"></i><span>Models</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="models-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('Dbmodel') }}" class="{{ request()->is('Dbmodels') ? 'active' : '' }}">
+                    <a href="{{ route('Dbmodel') }}" class="{{ request()->is('Dbmodels/{brandId}') ? 'active' : '' }}">
                         <i class="bi bi-circle"></i><span>All Models</span>
                     </a>
                 </li>
@@ -617,6 +621,8 @@
     <!-- Template Main JS File -->
     <script src="{{ url('/dashboard/assets/js/main.js') }}"></script>
 
+<!-- Bootstrap JS -->
+{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> --}}
 </body>
 
 </html>

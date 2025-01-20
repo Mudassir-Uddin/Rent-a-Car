@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('brand_id');
             $table->foreign('brand_id')->references('id')->on('brand');
             $table->unsignedBigInteger('model_id');
-            $table->foreign('model_id')->references('id')->on('model');
+            $table->foreign('model_id')->references('id')->on('Model');
             $table->string('img');
             $table->date('date');
             $table->string('registration_number')->unique();
